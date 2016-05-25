@@ -168,6 +168,7 @@ set(SRV_TEST_SOURCES
 	last_of_sequence.C
 	sample_analog.C
 	sample_server.C
+	simServer.cpp
 	testSharedObjectServer.C
 	test_analogfly.C
 	test_auxiliary_logger.C
