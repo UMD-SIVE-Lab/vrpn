@@ -2495,7 +2495,12 @@ static int vrpn_start_server(const char *machine, char *server_name, char *args,
 
         /* Close all files except stdout and stderr. */
         /* This prevents a hung child from keeping devices open */
+#if defined(__ANDROID__)
+	num_descriptors = sysconf(_SC_OPEN_MAX);
+#else
         num_descriptors = getdtablesize();
+#endif
+
         for (loop = 0; loop < num_descriptors; loop++) {
             if ((loop != 1) && (loop != 2)) {
                 close(loop);
